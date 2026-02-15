@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+/* Kanso Design System */
+:root {
+  /* Background */
+  --bg-primary: #FAFAF8;
+  --bg-secondary: #F2F0EB;
+
+  /* Text */
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #9B9B9B;
+
+  /* Accent */
+  --accent: #E85D3A;
+  --accent-hover: #D54E2C;
+
+  /* Border */
+  --border: #E5E3DE;
+
+  /* Semantic */
+  --success: #4CAF82;
+  --warning: #E8A73A;
+  --error: #E85D3A;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Animation */
+  --ease-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dark mode (prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --bg-primary: #141413;
+    --bg-secondary: #1E1E1C;
+    --text-primary: #E8E6E1;
+    --text-secondary: #A3A3A3;
+    --text-tertiary: #6B6B6B;
+    --border: #2A2A27;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Dark mode class override */
+.dark {
+  --bg-primary: #141413;
+  --bg-secondary: #1E1E1C;
+  --text-primary: #E8E6E1;
+  --text-secondary: #A3A3A3;
+  --text-tertiary: #6B6B6B;
+  --border: #2A2A27;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Light mode class override */
+.light {
+  --bg-primary: #FAFAF8;
+  --bg-secondary: #F2F0EB;
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #9B9B9B;
+  --border: #E5E3DE;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  --font-sans: var(--font-zen-kaku), var(--font-dm-sans), system-ui, sans-serif;
+  --font-heading: var(--font-outfit), system-ui, sans-serif;
+}
+
+/* Base styles */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Duration utilities */
+.duration-fast {
+  transition-duration: 150ms;
+}
+
+.duration-normal {
+  transition-duration: 250ms;
+}
+
+/* Swipe animation */
+@keyframes swipe-out {
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes collapse {
+  to {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* FAB animation */
+@keyframes fab-enter {
+  from {
+    transform: scale(0) rotate(-180deg);
+  }
+  to {
+    transform: scale(1) rotate(0);
+  }
+}
+
+.animate-fab-enter {
+  animation: fab-enter 500ms var(--ease-spring);
+}
+
+/* Page transition */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 350ms var(--ease-normal);
+}
+
+/* Fade in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 200ms ease-out;
+}
+
+/* Slide up */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 350ms var(--ease-spring);
+}
+
+/* Legal pages prose styling */
+.legal-prose h2 {
+  font-size: 18px;
+}
+
+.legal-prose p,
+.legal-prose li {
+  color: var(--text-secondary);
+}
+
+.legal-prose strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.legal-prose a {
+  color: var(--accent);
+}
+
+.legal-prose a:hover {
+  text-decoration: underline;
+}

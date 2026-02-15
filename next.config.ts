@@ -8,7 +8,7 @@ const withSerwist = withSerwistInit({
 });
 
 const nextConfig: NextConfig = {
-  turbopack: {},
+  // turbopack: {}, // Disabled due to CSS path resolution issue
 };
 
 export default withSerwist(nextConfig);

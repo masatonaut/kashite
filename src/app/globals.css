@@ -158,3 +158,26 @@ h1, h2, h3 {
 .animate-fab-enter {
   animation: fab-enter 500ms var(--ease-spring);
 }
+
+/* Legal pages prose styling */
+.legal-prose h2 {
+  font-size: 18px;
+}
+
+.legal-prose p,
+.legal-prose li {
+  color: var(--text-secondary);
+}
+
+.legal-prose strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.legal-prose a {
+  color: var(--accent);
+}
+
+.legal-prose a:hover {
+  text-decoration: underline;
+}

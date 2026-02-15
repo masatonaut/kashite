@@ -1,72 +1,90 @@
-import { JA } from "@/constants/ja";
+"use client";
+
+import { useState } from "react";
+import { Header } from "@/components/Header";
+import { LoanCard } from "@/components/LoanCard";
+import { EmptyState } from "@/components/EmptyState";
+import { AddLoanSheet } from "@/components/AddLoanSheet";
+import { ReturnedSection } from "@/components/ReturnedSection";
+import { FAB } from "@/components/FAB";
+import { useLoans } from "@/hooks/useLoans";
+import type { CreateLoanInput } from "@/lib/validations";
 
 export default function Home() {
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const { activeLoans, returnedLoans, isLoading, addLoan, markAsReturned } = useLoans();
+
+  const handleAddLoan = async (data: CreateLoanInput) => {
+    await addLoan({
+      item_name: data.item_name,
+      borrower_name: data.borrower_name,
+      memo: data.memo,
+      lent_at: data.lent_at.toISOString(),
+    });
+  };
+
+  const handleReturn = (id: string) => {
+    markAsReturned(id);
+  };
+
+  const handleShare = (id: string) => {
+    // TODO: Implement share modal
+    console.log("Share loan:", id);
+  };
+
   return (
     <main className="min-h-screen bg-bg-primary">
-      {/* Header */}
-      <header className="sticky top-0 z-10 bg-bg-primary/80 backdrop-blur-sm border-b border-border">
-        <div className="flex items-center justify-between px-5 py-4">
-          <h1 className="font-heading text-xl font-bold tracking-tight text-text-primary">
-            {JA.HEADER_TITLE}
-          </h1>
-          <div className="flex items-center justify-center w-6 h-6 rounded-full bg-accent text-white text-xs font-medium">
-            0
-          </div>
-        </div>
-      </header>
+      <Header activeCount={activeLoans.length} />
 
-      {/* Content */}
-      <div className="px-5 py-6 animate-fade-up">
-        {/* Empty State */}
-        <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-          <div className="w-24 h-24 mb-6 text-text-tertiary">
-            <svg
-              viewBox="0 0 96 96"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="16" y="24" width="64" height="48" rx="4" />
-              <path d="M16 36h64" />
-              <circle cx="28" cy="30" r="2" fill="currentColor" />
-              <circle cx="36" cy="30" r="2" fill="currentColor" />
-              <circle cx="44" cy="30" r="2" fill="currentColor" />
-              <path d="M32 52h32" />
-              <path d="M32 60h24" />
-            </svg>
+      <div className="px-5 py-6 pb-24 animate-fade-up">
+        {isLoading ? (
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
           </div>
-          <h2 className="text-lg font-medium text-text-primary mb-2">
-            {JA.EMPTY_TITLE}
-          </h2>
-          <p className="text-sm text-text-secondary mb-6">
-            {JA.EMPTY_DESCRIPTION}
-          </p>
-          <button className="px-6 py-3 bg-accent hover:bg-accent-hover text-white font-medium rounded-full transition-colors duration-fast shadow-md">
-            {JA.EMPTY_CTA}
-          </button>
-        </div>
+        ) : activeLoans.length === 0 && returnedLoans.length === 0 ? (
+          <EmptyState />
+        ) : (
+          <>
+            {/* Active loans */}
+            {activeLoans.length > 0 && (
+              <div className="space-y-3">
+                {activeLoans.map((loan) => (
+                  <LoanCard
+                    key={loan.id}
+                    id={loan.id}
+                    itemName={loan.item_name}
+                    borrowerName={loan.borrower_name}
+                    lentAt={loan.lent_at}
+                    onReturn={() => handleReturn(loan.id)}
+                    onShare={() => handleShare(loan.id)}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Empty active state but has returned */}
+            {activeLoans.length === 0 && returnedLoans.length > 0 && (
+              <EmptyState />
+            )}
+
+            {/* Returned section */}
+            <ReturnedSection
+              loans={returnedLoans}
+              onShare={handleShare}
+            />
+          </>
+        )}
       </div>
 
       {/* FAB */}
-      <button
-        className="fixed bottom-6 right-5 w-14 h-14 bg-accent hover:bg-accent-hover text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-fast animate-fab-enter"
-        aria-label="Add loan"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 5v14M5 12h14" />
-        </svg>
-      </button>
+      <FAB isOpen={isSheetOpen} onClick={() => setIsSheetOpen(!isSheetOpen)} />
+
+      {/* Add loan sheet */}
+      <AddLoanSheet
+        isOpen={isSheetOpen}
+        onClose={() => setIsSheetOpen(false)}
+        onSubmit={handleAddLoan}
+      />
     </main>
   );
 }

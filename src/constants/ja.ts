@@ -9,10 +9,12 @@ export const JA = {
 
   // Empty state
   EMPTY_TITLE: "まだ何も貸してないよ",
+  EMPTY_SUBTITLE: "+ボタンで記録を始めよう",
   EMPTY_DESCRIPTION: "友達に貸したモノを記録しよう",
   EMPTY_CTA: "最初の貸し出しを記録",
 
   // Loan card
+  DAYS_UNIT: "日",
   LOAN_DAYS_AGO: "日前",
   LOAN_TODAY: "今日",
   LOAN_RETURNED: "返却済み",
@@ -20,9 +22,9 @@ export const JA = {
 
   // Add loan sheet
   ADD_TITLE: "貸し出しを記録",
-  ADD_ITEM_LABEL: "何を貸した？",
+  ADD_ITEM_LABEL: "なにを貸した？",
   ADD_ITEM_PLACEHOLDER: "例: 本、傘、お金",
-  ADD_BORROWER_LABEL: "誰に？",
+  ADD_BORROWER_LABEL: "誰に貸した？",
   ADD_BORROWER_PLACEHOLDER: "例: 田中さん",
   ADD_MEMO_LABEL: "メモ（任意）",
   ADD_MEMO_PLACEHOLDER: "例: 来週返してくれる予定",

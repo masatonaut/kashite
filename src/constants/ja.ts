@@ -91,6 +91,49 @@ export const JA = {
   TERMS: "利用規約",
   PRIVACY: "プライバシーポリシー",
   TOKUSHOHO: "特定商取引法に基づく表記",
+
+  // Upgrade Modal
+  UPGRADE_MODAL_TITLE: "もっと記録したい？",
+  UPGRADE_MODAL_DESCRIPTION: "無料プランは{count}件まで。Proで無制限に。",
+  UPGRADE_FEATURE_UNLIMITED: "無制限に記録できる",
+  UPGRADE_FEATURE_SUPPORT: "優先サポート",
+  UPGRADE_CTA_MONTHLY: "¥300/月で始める",
+  UPGRADE_CTA_YEARLY: "¥2,400/年で始める",
+  UPGRADE_YEARLY_BADGE: "2ヶ月お得！",
+
+  // Pricing Page
+  PRICING_TITLE: "料金プラン",
+  PRICING_SUBTITLE: "シンプルな料金体系。いつでも解約可能。",
+  PRICING_FREE_NAME: "Free",
+  PRICING_FREE_DESC: "個人で使うならこれで十分",
+  PRICING_PRO_NAME: "Pro",
+  PRICING_PRO_DESC: "たくさん貸し借りする人向け",
+  PRICING_FOREVER: " / ずっと無料",
+  PRICING_PER_MONTH: " / 月",
+  PRICING_YEARLY_OPTION: "または ¥2,400/年（2ヶ月お得）",
+  PRICING_RECOMMENDED: "おすすめ",
+  PRICING_CURRENT_PLAN: "現在のプラン",
+  PRICING_FREE_BUTTON: "Freeプラン",
+  PRICING_CTA_MONTHLY: "¥300/月で始める",
+  PRICING_CTA_YEARLY: "¥2,400/年で始める",
+  PRICING_MANAGE: "プランを管理",
+  PRICING_FEATURE_LOANS_10: "10件まで記録",
+  PRICING_FEATURE_UNLIMITED: "無制限に記録",
+  PRICING_FEATURE_BASIC: "基本機能",
+  PRICING_FEATURE_SHARE: "シェア機能",
+  PRICING_FEATURE_PRIORITY_SUPPORT: "優先サポート",
+  PRICING_FEATURE_EARLY_ACCESS: "新機能の早期アクセス",
+
+  // FAQ
+  PRICING_FAQ_TITLE: "よくある質問",
+  FAQ_CANCEL_Q: "解約はいつでもできますか？",
+  FAQ_CANCEL_A: "はい、いつでも解約できます。次の請求サイクルから停止されます。",
+  FAQ_PAYMENT_Q: "どの支払い方法が使えますか？",
+  FAQ_PAYMENT_A: "クレジットカード（Visa、Mastercard、JCB、American Express）でお支払いいただけます。",
+  FAQ_DOWNGRADE_Q: "Proから無料プランに戻すとデータはどうなりますか？",
+  FAQ_DOWNGRADE_A: "データは保持されます。ただし、11件以上の記録がある場合、新規追加ができなくなります。",
+  FAQ_REFUND_Q: "返金はできますか？",
+  FAQ_REFUND_A: "サブスクリプション開始から7日以内であれば、全額返金いたします。",
 } as const;
 
 export type JAKey = keyof typeof JA;

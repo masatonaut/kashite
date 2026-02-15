@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect x="0" y="0" width="1200" height="630" fill="#FAFAF8"/>
+  <rect x="1170" y="0" width="30" height="630" fill="#E85D3A"/>
+  <g transform="translate(60, 50)">
+    <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#1A1A1A">choim</text>
+    <circle cx="118" cy="16" r="10" fill="#E85D3A"/>
+  </g>
+  <g transform="translate(600, 280)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="96" font-weight="800" letter-spacing="4" text-anchor="middle">
+      <tspan fill="#E85D3A">K</tspan><tspan fill="#1A1A1A">ASHITE</tspan>
+    </text>
+    <rect x="-240" y="20" width="480" height="6" fill="#E85D3A"/>
+  </g>
+  <text x="600" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="#666666" text-anchor="middle">Lend it. Track it. Get it back.</text>
+</svg>
